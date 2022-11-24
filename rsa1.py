@@ -13,18 +13,13 @@ def gcd(a, h):
 		a = h
 		h = temp
 
-def modInverse(A, M):
- 
-    for X in range(1, M):
-        if (((A % M) * (X % M)) % M == 1):
-            return X
-    return -1
-p = 13
-q = 17
+
+p = 3
+q = 7
 n = p*q
 e = 2
 phi = (p-1)*(q-1)
-print(phi)
+
 while (e < phi):
 
 	# e must be co-prime to phi and
@@ -37,14 +32,13 @@ while (e < phi):
 # Private key (d stands for decrypt)
 # choosing d such that it satisfies
 # d*e = 1 + k * totient
-print(e)
 
-
-d = modInverse(e,phi)
+k = 2
+d = (1 + (k*phi))/e
 
 # Message to be encrypted
-msg = 9.0
-print(d)
+msg = 12.0
+
 print("Message data = ", msg)
 
 # Encryption c = (msg ^ e) % n
@@ -54,7 +48,7 @@ print("Encrypted data = ", c)
 
 # Decryption m = (c ^ d) % n
 m = pow(c, d)
-m = math.fmod(m,n)
+m = math.fmod(m, n)
 print("Original Message Sent = ", m)
 
 
